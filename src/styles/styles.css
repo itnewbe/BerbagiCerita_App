@@ -1,0 +1,566 @@
+/* ========== RESET ========== */
+:root {
+  --primary: #1976d2;
+  --accent: #e53935;
+  --light: #ffffff;
+  --background: #f5f5f5;
+  --light-blue: #64b5f6;
+  --dark-blue: #0d47a1;
+  --deep-blue: #1e88e5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--background);
+}
+header {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.container {
+  padding-inline: 32px;
+  margin-inline: auto;
+  max-width: 1300px;
+}
+
+/* ========== HEADER ========== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightskyblue;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.main-header {
+  min-height: 70px;
+  padding-block: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* ========== NAVIGATION DRAWER ========== */
+.navigation-drawer {
+  min-height: 100vh;
+  width: 220px;
+  padding: 20px 10px;
+  background-color: white;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 350ms ease-in-out;
+  z-index: 9999;
+}
+
+.navigation-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-button {
+  color: var(--light);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 20px;
+}
+
+.nav-list li a {
+  padding: 10px 16px;
+  display: block;
+  color: #222222; /* Lebih gelap untuk kontras */
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.nav-list li a.active {
+  font-weight: bold;
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+#logout-button {
+  font-weight: bolder;
+  color: red;
+}
+.nav-list li a:hover {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+
+.fade-out {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+/* ========== SKIP TO CONTENT ========== */
+.skip-to-content,
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
+}
+
+.skip-to-content:focus,
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 1000;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  padding-block: 20px;
+  padding: 7em;
+}
+
+main {
+  view-transition-name: main-content;
+}
+
+/* ========== FORM ELEMENTS ========== */
+input,
+textarea {
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+  color: #333;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(25, 118, 210, 0.6);
+  outline: none;
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--light);
+  border: none;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: var(--deep-blue);
+  transform: translateY(-2px);
+}
+
+/* ========== REGISTER FORM ========== */
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin: 80px auto;
+  text-align: center;
+}
+
+.register-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-container input {
+  width: 100%;
+}
+
+.register-container button {
+  width: 100%;
+}
+
+#register-message {
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: green;
+}
+
+/* ========== LOGIN FORM ========== */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  margin-bottom: 15px;
+}
+
+.login-container button {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 14px;
+  font-weight: bold;
+}
+
+#login-message {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#header {
+  display: none;
+}
+
+/* ========== STORY FORM ========== */
+.story-form-container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin: 60px auto;
+  text-align: center;
+}
+
+.story-form-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.story-form-grid {
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.story-form-grid input,
+.story-form-grid textarea,
+.story-form-grid button {
+  width: 100%;
+}
+
+/* ========== FORM MESSAGES ========== */
+#form-message {
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: green;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+#form-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#form-message.error {
+  color: red;
+}
+
+/* ========== STORY DETAIL PAGE ========== */
+.story-detail {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.story-detail h2 {
+  color: darkblue;
+  margin-bottom: 10px;
+}
+
+.story-detail img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+#photo-preview,
+#camera-preview {
+  max-width: 100%;
+  max-height: 300px;
+  margin-top: 1rem;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.story-detail p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ========== MAP ========== */
+#map {
+  height: 300px;
+}
+
+/* ========== NOTIFICATION ========== */
+.notification {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0.9;
+  z-index: 10000;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification.error {
+  background-color: red;
+}
+
+.notification.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+/* ====== Halaman masuk/keluar ====== */
+
+/* Saat halaman baru masuk */
+.view-enter {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.view-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Saat halaman lama keluar */
+.view-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.view-exit-active {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ====== View Transition API fallback untuk smooth effect ====== */
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+  animation-duration: 0.4s;
+}
+
+/* ====== Optional Styling tambahan biar mulus di mobile ====== */
+.main-content {
+  will-change: opacity, transform;
+  min-height: 300px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.hidden {
+  display: none !important;
+}
+
+/* ========== RESPONSIVE STYLES FOR SMALLER SCREENS ========== */
+@media screen and (max-width: 768px) {
+  .navigation-drawer {
+    transition: transform 350ms ease-in-out, opacity 0.3s ease;
+    opacity: 0;
+  }
+  .navigation-drawer.open {
+    opacity: 1;
+  }
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    min-height: 100svh; /* safe viewport height */
+    padding: 7em 16px;
+  }
+
+  .container {
+    padding-inline: 16px;
+  }
+
+  .main-header {
+    padding-block: 8px;
+    gap: 10px;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .register-container,
+  .login-container,
+  .story-form-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .register-container h1,
+  .login-container h2,
+  .story-form-container h1 {
+    font-size: 1.2rem;
+  }
+
+  .story-form-grid {
+    gap: 12px;
+  }
+
+  input,
+  textarea,
+  button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .story-detail p {
+    font-size: 0.9rem;
+  }
+
+  #map {
+    height: 250px;
+  }
+
+  .notification {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    min-height: 48px; /* untuk hindari layout shift */
+  }
+}
+.empty-card {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: #f8f9fa;
+  border: 2px dashed #ccc;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 2rem auto;
+  transition: transform 0.3s ease;
+}
+
+.empty-card:hover {
+  transform: scale(1.02);
+}
+
+.empty-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.empty-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media screen and (min-width: 1001px) {
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navigation-drawer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    transform: none !important;
+    min-height: auto;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-left: auto;
+  }
+
+  .nav-list li a {
+    display: inline-block;
+    padding: 10px 12px;
+  }
+
+  .drawer-button {
+    display: none;
+  }
+}

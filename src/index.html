@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berbagi Cerita</title>
+
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="manifest" href="app.webmanifest" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" media="all" />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </noscript>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+</head>
+
+<body>
+  <button class="skip-to-content" id="skip-link">Konten Utama</button>
+  <header id="header">
+    <div class="main-header container">
+      <h1><a class="brand-name" href="#/">Berbagi Cerita</a></h1>
+      <button id="drawer-button" class="drawer-button" aria-label="Buka navigasi">☰</button>
+      <nav id="navigation-drawer" class="navigation-drawer" role="navigation" aria-label="Navigasi utama">
+        <ul id="nav-list" class="nav-list">
+          <li><a href="#/saved-stories"><i class="fas fa-bookmark"></i> Cerita Tersimpan</a></li>
+          <li><a href="#" id="subscribe-button" class="hidden"><i class="fas fa-bell"></i> Subscribe</a></li>
+          <li><a href="#" id="unsubscribe-button" class="hidden"><i class="fas fa-bell-slash"></i> Unsubscribe</a></li>
+          <li><a href="#/"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="#/add-story"><i class="fas fa-plus-circle"></i> Tambah Cerita</a></li>
+          <li><a href="#/about"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="#/login" id="login-button"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li><a href="#" id="logout-button" class="hidden"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content" tabindex="-1"></main>
+
+
+
+  <section aria-live="polite" aria-atomic="true">
+    <div id="notification" class="notification-container"></div>
+  </section>
+</body>
+
+</html>
