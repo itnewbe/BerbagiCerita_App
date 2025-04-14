@@ -69,7 +69,7 @@
       "src": "images/screenshots/BerbagiCerita_004.png",
       "sizes": "1080x2280",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "wide"
     },
     {
       "src": "images/screenshots/BerbagiCerita_005.png",
@@ -80,20 +80,48 @@
     {
       "src": "images/screenshots/BerbagiCerita_006.png",
       "sizes": "1080x2280",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow"
     },
     {
       "src": "images/screenshots/BerbagiCerita_007.png",
       "sizes": "1080x2280",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow"
     },
     {
       "src": "images/screenshots/BerbagiCerita_008.png",
       "sizes": "1080x2280",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Laporan Baru",
+      "short_name": "Baru",
+      "description": "Langsung menuju halaman Tambah Cerita",
+      "url": "/#/add-story",
+      "icons": [
+        {
+          "src": "images/icons/add-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Catatan Tersimpan",
+      "short_name": "Tersimpan",
+      "description": "Lihat daftar Cerita tersimpan.",
+      "url": "/saved-stories",
+      "icons": [
+        {
+          "src": "images/icons/bookmark-x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
     }
   ]
 }

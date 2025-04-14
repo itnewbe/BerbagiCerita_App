@@ -7,6 +7,23 @@ import { CacheableResponsePlugin } from "workbox-cacheable-response";
 // 💾 Precache semua yang ditentukan oleh Webpack InjectManifest (__WB_MANIFEST)
 precacheAndRoute(self.__WB_MANIFEST);
 
+// 📚 Data story dari Story API
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://story-api.dicoding.dev" &&
+    url.pathname.startsWith("/v1/stories"),
+  new StaleWhileRevalidate({
+    cacheName: "story-api-cache",
+    plugins: [
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+      new ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 5 * 60, // Cache selama 5 menit
+      }),
+    ],
+  })
+);
+
 // 📦 Google Fonts (CSS & Fonts)
 registerRoute(
   ({ url }) =>
@@ -14,6 +31,34 @@ registerRoute(
     url.origin === "https://fonts.gstatic.com",
   new StaleWhileRevalidate({
     cacheName: "google-fonts-cache",
+    plugins: [
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+      new ExpirationPlugin({ maxEntries: 20 }),
+    ],
+  })
+);
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://api.maptiler.com" &&
+    url.pathname.startsWith("/maps/streets/"),
+  new CacheFirst({
+    cacheName: "map-tiles-cache",
+    plugins: [
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+      new ExpirationPlugin({
+        maxEntries: 100,
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 hari
+      }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://api.maptiler.com" &&
+    url.pathname.startsWith("/geocoding/"),
+  new StaleWhileRevalidate({
+    cacheName: "maptiler-geocode-cache",
     plugins: [
       new CacheableResponsePlugin({ statuses: [0, 200] }),
       new ExpirationPlugin({ maxEntries: 20 }),
